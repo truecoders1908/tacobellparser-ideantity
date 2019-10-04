@@ -11,8 +11,27 @@
         {
             logger.LogInfo("Begin parsing");
 
-            // Do not fail if one record parsing fails, return null
-            return null; // TODO Implement
+            if (line == null)
+            {
+                return null;
+            }
+
+            var cells = line.Split(',');
+
+            if (cells.Length < 3)
+            {
+                return null;
+            }
+
+            double lattitude, longitude;
+            double.TryParse(cells[0], out lattitude);
+            double.TryParse(cells[1], out longitude);
+            string name = cells[2];
+            Tacobell TBell = new Tacobell();
+            TBell.Name = name;
+            TBell.Location = new Point() { Latitude = lattitude, Longitude = longitude };
+
+            return TBell;
         }
     }
 }

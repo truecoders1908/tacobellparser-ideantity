@@ -43,7 +43,7 @@ namespace LoggingKata.Test
             ITrackable actual = tacoParser.Parse(str);
 
             //Assert
-            Assert.Null(actual);
+            Assert.Equal(actual, expected);
         }
     }
 }
